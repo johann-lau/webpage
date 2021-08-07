@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+      <title>My local website</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" id="mystyle" href="style.css">
+      <base target="_blank">
+      <link rel="shortcut icon" href="/favicon.ico">
+      <link rel="icon" sizes="16x16 32x32 64x64" href="/favicon.ico">
+      <link rel="icon" type="image/png" sizes="196x196" href="/favicon-192.png">
+      <link rel="icon" type="image/png" sizes="160x160" href="/favicon-160.png">
+      <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
+      <link rel="icon" type="image/png" sizes="64x64" href="/favicon-64.png">
+      <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+      <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+      <link rel="apple-touch-icon" href="/favicon-57.png">
+      <link rel="apple-touch-icon" sizes="114x114" href="/favicon-114.png">
+      <link rel="apple-touch-icon" sizes="72x72" href="/favicon-72.png">
+      <link rel="apple-touch-icon" sizes="144x144" href="/favicon-144.png">
+      <link rel="apple-touch-icon" sizes="60x60" href="/favicon-60.png">
+      <link rel="apple-touch-icon" sizes="120x120" href="/favicon-120.png">
+      <link rel="apple-touch-icon" sizes="76x76" href="/favicon-76.png">
+      <link rel="apple-touch-icon" sizes="152x152" href="/favicon-152.png">
+      <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png">
+      <meta name="msapplication-TileColor" content="#FFFFFF">
+      <meta name="msapplication-TileImage" content="/favicon-144.png">
+      <meta name="msapplication-config" content="/browserconfig.xml">
+    </head>
+
+    <body onload=setcolor()>
+      <script>
+        function adjust(color, amount) {
+          return '#' + color.replace(/^#/, '').replace(/../g, color => ('0'+Math.min(255, Math.max(0, parseInt(color, 16) + amount)).toString(16)).substr(-2));
+        }
+        var bgcolor = localStorage.getItem('b') || "#ffffff";
+        var focolor = localStorage.getItem('f') || "#000000";
+        var mysheet = document.getElementById("mystyle").sheet;
+        var scache = 1
+        var a1p=true
+        var shown=false
+        var a
+        var w = window.innerWidth;
+        var h = window.innerHeight;
+        var item = localStorage.getItem('item') || "";
+        
+      </script>
+      <h1 style="font-size: 60px; font-family: SF;">I just wanna tell you how I'm feeling.</h1>
+      <video onplaying="rickrolled()" id="v1" autoplay loop>
+        <source src="movie1.mp4" type="video/mp4">
+      </video>
+      <br>
+      <button id="pp" type="button" onclick=rickroll() class="mybutton rbutton button1">Play/Pause</button>
+      <br>
+      <p class="par" id="t2">Screen size: loading</p>
+      <p class="par">The video's size will adjust according to your screen size. Reload after resizing your window.</p>
+      <br>
+      <p class="par">Change the theme!</p>
+
+      <div style="height: 200px;">
+        <div style="width:50%; float: left;" float="left">
+          <input type="color" class="colors" id="bgc" value="#ffffff">
+          <input type="color" class="colors" id="fgc" value="#000000">
+        </div>
+        <br>
+        <div style="width: 50%; float: right;" float="right">
+          <button style="width: 180px;" type="button" onclick="theme(0,0,false)" class="mybutton rbutton button1">&#x25D0;White</button>
+          <button style="width: 180px;" type="button" onclick="theme(1,1,false)" class="mybutton rbutton button1">Dark</button>
+          <button style="width: 180px;" type="button" onclick="theme(1,1,true)" class="mybutton rbutton button1">Light</button>
+          <button style="width: 180px;" type="button" onclick="theme(0,0,true)" class="mybutton rbutton button1">&#x25D0;Black</button>
+        </div>
+      </div>
+      <br>
+
+      <script>
+        blist = ["#FFFFFF","#37393E","#76D3F9","#7DA8F7","#AA90F7","#D798F8","#DE799D","#F19286","#F3A884","#F7C783","#FAD885","#FFF8A2","#EDF29B","#BADD95"];
+        flist = ["#000000","#DCDDDE","#1D4C63","#0A3075","#170F4F","#3F1556","#4F1729","#791E0E","#732F10","#744C16","#74581A","#8C8529","#717524","#3F5623"];
+      </script>
+
+      <div style="width: 100%; float: right;" float="right">
+        <button style="width: 80px;" type="button" onclick="theme(2,2,false)" class="mybutton mbutton button1">Blue</button>
+        <button style="width: 80px;" type="button" onclick="theme(3,3,false)" class="mybutton mbutton button1">Ocean</button>
+        <button style="width: 80px;" type="button" onclick="theme(4,4,false)" class="mybutton mbutton button1">Purple</button>
+        <button style="width: 80px;" type="button" onclick="theme(5,5,false)" class="mybutton mbutton button1">Violet</button>
+        <button style="width: 80px;" type="button" onclick="theme(6,6,false)" class="mybutton mbutton button1">Pink</button>
+        <button style="width: 80px;" type="button" onclick="theme(7,7,false)" class="mybutton mbutton button1">Red</button>
+        <button style="width: 80px;" type="button" onclick="theme(8,8,false)" class="mybutton mbutton button1">Orange</button>
+        <button style="width: 80px;" type="button" onclick="theme(9,9,false)" class="mybutton mbutton button1">Tan</button>
+        <button style="width: 80px;" type="button" onclick="theme(10,10,false)" class="mybutton mbutton button1">Gold</button>
+        <button style="width: 80px;" type="button" onclick="theme(11,11,false)" class="mybutton mbutton button1">Yellow</button>
+        <button style="width: 80px;" type="button" onclick="theme(12,12,false)" class="mybutton mbutton button1">Olive</button>
+        <button style="width: 80px;" type="button" onclick="theme(13,13,false)" class="mybutton mbutton button1">Green</button>
+        <br>
+        <button style="width: 80px;" type="button" onclick="theme(2,2,true)" class="mybutton mbutton button1">Blue</button>
+        <button style="width: 80px;" type="button" onclick="theme(3,3,true)" class="mybutton mbutton button1">Ocean</button>
+        <button style="width: 80px;" type="button" onclick="theme(4,4,true)" class="mybutton mbutton button1">Purple</button>
+        <button style="width: 80px;" type="button" onclick="theme(5,5,true)" class="mybutton mbutton button1">Violet</button>
+        <button style="width: 80px;" type="button" onclick="theme(6,6,true)" class="mybutton mbutton button1">Pink</button>
+        <button style="width: 80px;" type="button" onclick="theme(7,7,true)" class="mybutton mbutton button1">Red</button>
+        <button style="width: 80px;" type="button" onclick="theme(8,8,true)" class="mybutton mbutton button1">Orange</button>
+        <button style="width: 80px;" type="button" onclick="theme(9,9,true)" class="mybutton mbutton button1">Tan</button>
+        <button style="width: 80px;" type="button" onclick="theme(10,10,true)" class="mybutton mbutton button1">Gold</button>
+        <button style="width: 80px;" type="button" onclick="theme(11,11,true)" class="mybutton mbutton button1">Yellow</button>
+        <button style="width: 80px;" type="button" onclick="theme(12,12,true)" class="mybutton mbutton button1">Olive</button>
+        <button style="width: 80px;" type="button" onclick="theme(13,13,true)" class="mybutton mbutton button1">Green</button>
+      </div>
+      <br>
+
+      <div>
+        <button type="button" onclick=clicked() class="mybutton rbutton button1">The real treasure</button>
+        <p class="par" id="t1">Click on the button above to reveal the treasure&#x2026;</p>
+        <p class="par">Scroll down for more</p>
+      </div>
+
+      <div style="width: 50%; float: left;" float="left">
+        <h2 style="font-size: 40px; font-family: SF;">Rickroll Pianoforte</h2>
+        <video id="v2" controls loop>
+          <source src="movie2.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div style="width: 50%; float: right;" float="right">
+        <h2 style="font-size: 40px; font-family: SF;">Together Forever</h2>
+        <video id="v3" controls loop>
+          <source src="movie3.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div style="width: 50%; float: left;" float="left">
+        <h2 style="font-size: 40px; font-family: SF;">Get Stick Bugged</h2>
+        <video id="v4" controls loop>
+          <source src="movie4.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div style="width: 50%; float: right;" float="right">
+        <h2 style="font-size: 40px; font-family: SF;">Whenever You Need Somebody</h2>
+        <video id="v5" controls loop>
+          <source src="movie5.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <h2 style="font-size: 40px; font-family: SF;">Stickbug Song (with buttons)</h2>
+      <button style="width:200px;" type="button" onclick="document.getElementById('a2').play();" class="mybutton rbutton button1">􀊃 Play</button>
+      <button style="width:200px;" type="button" onclick="document.getElementById('a2').pause();" class="mybutton rbutton button1">􀊅 Pause</button>
+      <button style="width:200px;" type="button" onclick=sstop() class="mybutton rbutton button1">􀛶 Stop</button>
+      <p style="display: inline-block;" class="par">Total time: 1:29</p>
+      <br>
+      <button style="width:200px;" type="button" onclick=sr15() class="mybutton rbutton button1">􀊉 15s</button>
+      <button style="width:200px;" type="button" onclick=sr10() class="mybutton rbutton button1">􀊉 10s</button>
+      <button style="width:200px;" type="button" onclick=sr5() class="mybutton rbutton button1">􀊉 5s</button>
+      <p style="display: inline-block;" class="par" id="sadisp">Current time: 0:00</p>
+      <br>
+      <button style="width:200px;" type="button" onclick=sf15() class="mybutton rbutton button1">􀊋 15s</button>
+      <button style="width:200px;" type="button" onclick=sf10() class="mybutton rbutton button1">􀊋 10s</button>
+      <button style="width:200px;" type="button" onclick=sf5() class="mybutton rbutton button1">􀊋 5s</button>
+      <p style="display: inline-block;" class="par" id="sbdisp">Loading&#x2026; Speed depends on your network</p>
+      <br>
+      <button style="width:200px;" type="button" onclick=smute() class="mybutton rbutton button1">􀊢 Mute</button>
+      <button style="width:200px;" type="button" onclick=svm() class="mybutton rbutton button1">􀊤 -10%</button>
+      <button style="width:200px;" type="button" onclick=sva() class="mybutton rbutton button1">􀊦 +10%</button>
+      <p style="display: inline-block;" class="par" id="savol">Current volume: 100%</p>
+      <br>
+      <br>
+      <label class="par">Enter something for yourself!</label>
+      <input class="tinput" type="text" id="textform1"></input>
+      <button style="height:50px;" type="buttons" onclick=submit() class="mbutton mybutton rbutton button1">Submit!</button>
+      <form action="submit.php" method="post" target="_self">
+        <label class="par">Enter something in the public!</label>
+        <input class="tinput" type="text" id="textform2" name="msg">
+        <input style="height:50px;" class="mbutton mybutton rbutton button1" type="submit"></input>
+      </form>
+      <br>
+      <p class="par" id="formans">Retrieving value&#x2026;</p>
+
+      <audio id="a1" loop>
+        <source src="audio1.mp3" type="audio/mpeg">
+      </audio>
+
+      <audio id="a2">
+        <source src="audio2.mp3" type="audio/mpeg">
+      </audio>
+
+      <script>
+        document.getElementById('formans').innerHTML = item
+
+        function submit() {
+          var ans = document.getElementById("textform1").value
+          localStorage.setItem('item', ans);
+          document.getElementById('formans').innerHTML = ans
+        }
+
+        bg = document.getElementById('bgc')
+        bg.addEventListener("change", BGc, false);
+        fg = document.getElementById('fgc')
+        fg.addEventListener("change", FGc, false);
+
+        function BGc(event) {
+          bgcolor = event.target.value
+          setcolor();
+        }
+
+        function FGc(event) {
+          focolor = event.target.value;
+          setcolor();
+        }
+
+        function setcolor() {
+          bg.value = bgcolor;
+          fg.value = focolor;
+          tbcolor = adjust(bgcolor, -15)
+          tfcolor = adjust(focolor, -20)
+          document.body.style.backgroundColor = bgcolor;
+          document.getElementsByTagName('body')[0].style.color = focolor;
+          mysheet.deleteRule(13);mysheet.deleteRule(12);mysheet.deleteRule(11);mysheet.deleteRule(10);mysheet.deleteRule(9);
+          mysheet.insertRule(`
+.tinput {
+  font-family: SF, Arial, Helvetica, sans-serif;
+  font-size: 25px;
+  width: 500px;
+  height: 30px;
+  background-color: `+tbcolor+`;
+  color: `+tfcolor+`;
+}
+`, mysheet.cssRules.length);
+          mysheet.insertRule(`
+#bgc {
+width: 96px;
+height: 96px;
+border-style: solid;
+border-color: `+focolor+`;
+background-color: `+bgcolor+`;
+border-width: 4px;
+}
+`, mysheet.cssRules.length);
+          mysheet.insertRule(`
+#fgc {
+width: 96px;
+height: 96px;
+border-style: solid;
+border-color: `+bgcolor+`;
+background-color: `+focolor+`;
+border-width: 4px;
+}
+`, mysheet.cssRules.length);
+          mysheet.insertRule(`
+.button1 {
+color: `+focolor+`;
+border-color: `+focolor+`;
+background-color: `+bgcolor+`;
+}
+`, mysheet.cssRules.length);
+          mysheet.insertRule(`
+.button1:hover {
+color: `+bgcolor+`;
+border-color: `+focolor+`;
+background-color: `+focolor+`;
+}
+`, mysheet.cssRules.length);
+          localStorage.setItem('b', bgcolor);
+          localStorage.setItem('f', focolor);
+        }
+
+        sa = document.getElementById('a2')
+        sa.volume = 1
+        sa.ontimeupdate = sadisp;
+        sa.canplay = sacp1();
+        sa.canplaythrough = sacp2();
+
+        function smute() {
+          if (sa.volume == 0 && scache!=0) {
+            sa.volume = scache;
+          } else {
+            scache = sa.volume;
+            sa.volume = 0;
+          }
+          savold();
+        }
+
+        function svm() {
+          sa.volume = sa.volume - 0.1;
+          savold();
+        }
+
+        function sva() {
+          sa.volume = sa.volume + 0.1;
+          savold();
+        }
+
+        function sacp1() {
+          document.getElementById('sbdisp').innerHTML = "Buffering&#x2026; Speed depends on your network"
+        }
+
+        function sacp2() {
+          document.getElementById('sbdisp').innerHTML = "Finished buffering"
+        }
+
+        function savold() {
+          var disp = Math.round(sa.volume*100)+"%"
+          document.getElementById('savol').innerHTML = "Current volume: "+disp;
+        }
+        
+        function sadisp() {
+          var disp1 = Math.floor(sa.currentTime/60)+":"
+          var disp2 = ('0000'+(Math.round(sa.currentTime))%60).slice(-2);
+          document.getElementById('sadisp').innerHTML = "Current time: "+disp1+disp2;
+        }
+
+        function sstop() {
+          sa.pause();
+          sa.currentTime = 0;
+        }
+
+        function sr15() {
+          sa.currentTime = sa.currentTime - 15;
+        }
+
+        function sr10() {
+          sa.currentTime = sa.currentTime - 10;
+        }
+
+        function sr5() {
+          sa.currentTime = sa.currentTime - 5;
+        }
+
+        function sf15() {
+          sa.currentTime = sa.currentTime + 15;
+        }
+
+        function sf10() {
+          sa.currentTime = sa.currentTime + 10;
+        }
+
+        function sf5() {
+          sa.currentTime = sa.currentTime + 5;
+        }
+
+        function theme(bgindex, foindex, inverted) {
+          if (inverted) {
+            bgcolor = flist[bgindex];
+            focolor = blist[foindex];
+          } else {
+            bgcolor = blist[bgindex];
+            focolor = flist[foindex];
+          }
+          setcolor();
+        }
+
+        function rickroll() {
+          if (a1p) {
+            a1p = false
+            document.getElementById('a1').play();
+            alert('Get double-rickrolled lol.')
+            document.getElementById('pp').innerHTML = "You got double-rickrolled and you can't stop it. Unless you close your browser.";
+          }
+        }
+        function rickrolled() {
+          "alert('You got rickrolled. This window will stop you from pausing it.');"
+        }
+        document.getElementById('v1').setAttribute("width", w-15);
+        document.getElementById('t2').innerHTML = "Screen size: "+w+"px x "+h+"px";
+        function clicked() {
+          if (shown == false) {
+            a=`We're no strangers to love<br>
+            You know the rules and so do I<br>
+            A full commitment's what I'm thinking of<br>
+            You wouldn't get this from any other guy<br>
+            I just wanna tell you how I'm feeling<br>
+            Gotta make you understand<br><br>
+            Never gonna give you up<br>
+            Never gonna let you down<br>
+            Never gonna run around and desert you<br>
+            Never gonna make you cry<br>
+            Never gonna say goodbye<br>
+            Never gonna tell a lie and hurt you<br><br>
+            We've known each other for so long<br>
+            Your heart's been aching but you're just shy to say it<br>
+            Inside we both know what's been going on<br>
+            We know the game and we're gonna play it<br>
+            And if you ask me how I'm feeling<br>
+            Don't tell me you're too blind to see<br>`
+          } else {
+            a="Click on the button above to reveal the treasure&#x2026;"
+          }
+          document.getElementById('t1').innerHTML = a
+          document.getElementById('t1').scrollIntoView();
+          shown = !shown
+        }
+        function load() {
+          `window.open('johann.local','_blank');
+          window.open('johann.local','_blank');
+          window.open('johann.local','_blank');
+          window.open('johann.local','_blank');
+          window.open('johann.local','_blank');`
+        }
+      </script>
+    </body>
+</html>

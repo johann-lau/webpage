@@ -1,0 +1,89 @@
+@font-face {
+  font-family:"SF";
+  src: url("SF.otf") format("truetype");
+}
+
+html {
+  scroll-behavior: smooth;
+  position: relative;
+}
+
+div {
+  height: min-content;
+}
+
+.par {
+  font-family: SF, Arial, Helvetica, sans-serif;
+  font-size: 30px;
+}
+
+.pars {
+  font-family: SF, Arial, Helvetica, sans-serif;
+  font-size: 15px;
+}
+
+.selector {
+  font-family: monospace;
+}
+
+.mybutton {
+  font-family: SF, Arial, Helvetica, sans-serif;
+  text-align: center;
+  display: inline-block;
+  margin: 4px 8px;
+  border-style: solid;
+  border-width: 4px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.rbutton {
+  font-size: 30px;
+  padding: 16px 32px;
+  border-radius: 10px;
+}
+
+.mbutton {
+  font-size: 20px;
+  padding: 4px 2px;
+  border-radius: 8px;
+}
+
+.tinput {
+  font-family: SF, Arial, Helvetica, sans-serif;
+  font-size: 25px;
+  width: 500px;
+  height: 30px;
+  background-color: #000;
+  color: #fff;
+}
+
+#bgc {
+  width: 96px;
+  height: 96px;
+  border-style: solid;
+  border-color: #000;
+  background-color: #fff;
+  border-width: 4px;
+}
+
+#fgc {
+  width: 96px;
+  height: 96px;
+  border-style: solid;
+  border-color: #fff;
+  background-color: #000;
+  border-width: 4px;
+}
+
+.button1 {
+  color: #000;
+  border-color: #4c56af;
+  background-color: #fff;
+}
+
+.button1:hover {
+  color: #fff;
+  border-color: #4c56af;
+  background-color: #4c56af;
+}
